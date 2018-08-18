@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+//c++比c加强的地方
+/*
+//原来的c语言中所有的变量必须提前定义，否则就会报错
+//实用性加强
+//c的例子：
+int main()
+{
+	int i=0;
+	printf("i:%d \n",i);
+	int k=0;
+	printf("k:%d \n",k);//或报错，但在c++中是对的
+	return0;
+}
+//c++的例子：
+int main()
+{
+	int i=0;
+	printf("i:%d \n",i);
+	int k=0;
+	printf("k:%d \n",k);//或报错，但在c++中是对的
+	return 0;
+	system("pause");//不加就不会出现运行框
+}
+*/
+
+
+/*
+//加入了bool值：
+int main()
+{
+	bool a=true;//bool值只有1（true）和0（false），不论赋值多少最终能够输出就是0或1；
+	cout<<"sizeof(bool):"<<sizeof(bool)<<endl;//测试bool类型的大小
+	return 0;
+}
+*/
+
+
+//c中：三目运算符时一个表达式，表达式不能做左值，不能放等号左边
+//c中，表达式返回的是一个数：（a<b?a:b）可以看是返回了那个较大的数，所以不能放在左值，但可以改成：（a<b?&a:&b），这样返回地址就可以和c++一样了
+//c++中，表达式返回的是一个变量：（a<b?a:b）可以看成是返回了较大的变量的本身，可以放在左值
+int main()
+{
+	int a=10,b=20;
+	(a<b?a:b)=30;
+	cout<<"a:"<<a<<"  "<<"b:"<<b<<endl;
+	return 0;
+}

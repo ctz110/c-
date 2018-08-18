@@ -1,0 +1,46 @@
+#include<iostream>//iostream中没有引用标准的std
+using namespace std;//此处手写加入
+/*例1
+//如果不写using namespace std;把上放的using namespace std;注释掉
+int main()
+{
+	std::cout<<"test"<<std::endl;
+	return 0;
+}
+*/
+//自己定义和使用命名空间
+namespace namespaceA
+	{
+		int a=10;
+	}
+namespace namespaceB
+	{
+		int a=20;
+		namespace namespaceC
+		{
+			struct teacher//结构体，调用方法与类  类似
+			{
+				char name[16];
+				int age;
+			};
+		}
+	}
+int main()
+{
+	using namespace namespaceA;
+	using namespace namespaceB;
+	cout<<"namespace namespaceA中的a："<<namespaceA::a<<endl;//要说明用的是哪个作用域的a
+	cout<<"namespace namespaceB中的a："<<namespaceB::a<<endl;
+	//调用teacher
+	//方法1
+	/*
+	namespaceB::namespaceC::teacher t;
+	t.age=30;
+	*/
+	//方法2
+	using namespaceB::namespaceC::teacher;
+	teacher t;
+	t.age=30;
+	cout<<"teacher的年龄"<<t.age<<endl;
+	return 0;
+}

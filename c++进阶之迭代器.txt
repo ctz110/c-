@@ -1,0 +1,94 @@
+1容器：把元素拷贝到容器中
+  访问容器可以通过数组方式也可以通过迭代器方式；
+  容器实现了数据类型和算法的有效分离；
+  拷贝时考虑深浅问题，分深拷贝和浅拷贝，浅拷贝可以直接拷贝，深拷贝要另外考虑； 
+
+
+2迭代器：相当于一个指针，分类（双向迭代器和单项迭代器）
+   通过迭代器来访问容器，可以不论容器里的数据的数据类型；
+
+    
+3算法：算法和迭代器进行无缝链接
+
+
+shift+delete：删除一行代码
+F9：添加端点
+
+例子：
+#include<iostream>
+using namespace std;
+#include"vector"
+#include"algorithm"
+void main1()
+{
+	//容器
+	vector<int> v1;//此处定义一个容器v1，里面放着int型数据，此处装的是基础数据类型
+	v1.push_back(1);//此处会将1  3  5全都复制到容器里
+	v1.push_back(3);
+	v1.push_back(5);
+	//迭代器
+	for(vector<int>::iterator it=v1.begin();it!=v1.end();it++)//此处定义迭代器，此处的vector<int>::iterator it相当于定义一个指针，叫it，v1从开头，只要不是v1结尾他就++
+	{
+		cout<<*it<<" ";//输出容器里的东西
+	}
+	//算法
+	int num1=count(v1.begin(),v1.end(),3);//c此处的算法是计算从容器开始到结束，3的个数，
+		cout<<"num1:"<<num1<<endl;
+}
+//2
+class Teacher
+{
+public:
+	int age;
+void ptintT()
+{
+	cout<<"age;"<<age<<endl;
+}
+
+};
+void main2()
+{
+	//容器
+	Teacher t1,t2,t3;
+	t1.age=31;
+	t2.age=33;
+	t3.age=35;
+	vector<Teacher> v1;//此处定义一个容器v1，里面放着teacher的元素，此处容器装的数据类型是元素
+	v1.push_back(t1);
+	v1.push_back(t2);
+	v1.push_back(t3);
+	//迭代器
+	for(vector<Teacher>::iterator it=v1.begin();it!=v1.end();it++)//注意迭代器要注意里面的是谁的迭代器，就要改
+	{
+		cout<<it->age<<" ";
+	}
+	
+}
+void main3()
+{
+	//容器
+	Teacher t1,t2,t3;
+	t1.age=31;
+	t2.age=33;
+	t3.age=35;
+	Teacher *p1,*p2,*p3;
+	p1=&t1;//t1   t2   t3的内存首地址给p1  p2  p3
+	p2=&t2;
+	p3=&t3;
+	vector<Teacher *> v1;//此处定义一个容器v1，里面放着teacher 指针的元素，此处容器装数据类型的是指针
+	v1.push_back(p1);//将t1   t2   t3的内存首地址给p1  p2  p3复制给容器
+	v1.push_back(p2);
+	v1.push_back(p3);
+	//迭代器
+	for(vector<Teacher *>::iterator it=v1.begin();it!=v1.end();it++)//此处用迭代器指向p1  p2  p3，而迭代器又类似于指针
+	{
+		cout<<(*it)->age<<" ";//此处要用的是指向指针的指针，
+	}
+	
+}
+void main()
+{
+	main1();
+	main2();
+	main3();
+}

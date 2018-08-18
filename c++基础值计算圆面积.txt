@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+//求圆的面积
+//1.面向过程的程序设计，按照程序从上往下一步一步执行
+int main()
+{
+	double r=0;
+	double s=0;
+	cout<<"请输入圆的半径:"<<endl;
+	cin>>r;
+	s=3.14*r*r;
+	cout<<"圆的面积是："<<s<<endl;
+	return 0;
+}
+/*
+//面向对象的程序设计，从主函数main开始，用到了类的哪个函数就返回调用
+class yuan//定义类就是定义一个数据类型，但是定义类，就是一个抽象概念，不会分配内存
+{
+	double m_r;
+	double m_s;
+	double m_l;
+public:
+	void set(double r)
+	{
+		m_r=r;
+	}
+	void mianji()
+	{
+		m_s=m_r*m_r*3.14;
+	}
+	void zhouchang()
+	{
+		m_l=2*3.14*m_r;
+	}
+	void get()
+	{
+		cout<<"圆的半径是："<<m_r<<endl;
+		cout<<"圆的面积是："<<m_s<<endl;
+		cout<<"圆的周长是："<<m_l<<endl;
+	}
+};
+int main()
+{
+	yuan y;//此处定义类的变量，会分配内存
+	y.set(0.1);
+	y.mianji();
+	y.zhouchang();
+	y.get();
+	return 0;
+}
+*/
