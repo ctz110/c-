@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+/*例1：
+    //const int a;
+	//int const b;//1和2写法相同
+	//const * int c;//此处const修饰的是指针指向的空间，指针指向的空间不能被修改,但是指向空间的指针可以修改
+	//int * const d;//此处const修饰的是指针d，指针d不可以再指向其他地方
+	//const int * const e;//此处const，表示e指针指向的空间不能被修改，且指针e不可以再指向其他地方
+
+struct teacher
+{
+	char name[10];
+	int age;
+};
+
+
+
+//指针所指向的内存空间不能被修改
+void operatorteacher(const teacher *pt )
+{
+	pt->age=10;//这样会报错，无法访问
+
+}
+
+
+
+
+//pt不能被修改，即pt不能指向其他变量
+void operatorteacher(teacher * const pt )
+{
+	pt->age=10;
+	cout<<"age:"<<pt->age<<endl;
+	//pt->null;//这样会报错，无法改变pt
+}
+
+
+int main()
+{
+	teacher t1;
+	t1.age=20;
+	operatorteacher(&t1);
+	return 0;
+}
+*/
+
+/*例2：
+//const分配内存是在编译器编译期间分配,就是在代码被读取是分配
+int main()
+{
+	int a;
+	int const b=10;
+	int c;
+	cout<<"a:"<<&a<<"b:"<<&b<<"c:"<<&c<<endl;
+}
+*/
+
+
+//const与#define（宏定义）
+/*
+//1：相同
+// #define d 10;//效果相同（全局变量）
+	const int d=10;//定义在主函数外面的全局常量
+int main()
+{
+	int a=10;
+	int b=10;
+	//int array[a+b];//会报错，因为现在a，b都是变量
+	const int c=10;
+	//const int d=10;//定义的局部常量
+	int array[c+d];//不会报错，因为c，d已经被定义为常量
+	return 0;
+}
+*/
+//2不同： const分配内存是在编译器编译期间处理的,提供类型检查和作用域检查，分全局和局部
+//		 #define实在预处理阶段处理的，只是文本替换，只有全局
+void fun()
+{
+	#define a 10;
+	const int b=10;
+	//#undef a;//卸载宏定义这样就可以将全局的a变成局部的a
+}
+void fun2()
+{
+	int *p;
+	*p=a;//可以看到a是全局的，
+	cout<<*p<<endl;//问：为什么这里不能直接写a,这一段代码有问题
+}
+int main()
+{
+	fun();
+	fun2();
+	return 0;
+}
+
+	
+
